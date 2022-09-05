@@ -1,0 +1,153 @@
+package machine;
+import java.util.Scanner;
+public class CoffeeMachine {
+       public static int water = 400;
+       public static int milk = 540;
+       public static int coffeb = 120;
+       public static int discup = 9;
+       public static int money = 550;
+    public static void main(String[] args) {
+        
+       menu();
+    }
+
+       static void menu(){
+       Scanner scanner = new Scanner(System.in); 
+       
+        System.out.println("Write action (buy, fill, take, remaining, exit):");
+        String z = scanner.nextLine();
+        switch (z) {
+            case "buy":
+                System.out.println("What do you want to buy? 1 - espresso, 2 - latte, 3 - cappuccino:");
+                String number = scanner.nextLine();
+                switch (number) {
+                    case "1":
+                        if (water<250) {
+                        System.out.println("Sorry, not enough water!");
+                        }
+                        else if (coffeb<16)
+                        {
+                        System.out.println("Sorry, not enough coffe beans!");
+                        }
+                        else if (discup<1) {
+                        System.out.println("Sorry, not enough cups!");
+                        }
+                        else if(water>=250 && coffeb>=16 && discup>=1) {
+                        System.out.println("I have enough resources, making you a coffee!");
+                        
+                        water=water-250;
+                        coffeb=coffeb-16;
+                        discup=discup-1;
+                        money=money+4;
+                        
+                        
+                        }
+                        menu();
+                        break;
+                    case "2":
+                        if (water<350) {
+                        System.out.println("Sorry, not enough water!");
+                        }
+                        else if (coffeb<20)
+                        {
+                        System.out.println("Sorry, not enough coffe beans!");
+                        }
+                        else if (milk<75) {
+                        System.out.println("Sorry, not enough milk!");
+                        }
+                        else if (discup<1) {
+                        System.out.println("Sorry, not enough cups!");
+                        }
+                        else if (water>=350 && coffeb>=20 && milk>=75 && discup>=1) {
+                        System.out.println("I have enough resources, making you a coffee!");
+                        
+                        water=water-350;
+                        coffeb=coffeb-20;
+                        discup=discup-1;
+                        milk=milk-75;
+                        money=money+7;
+                        
+                        }
+                        menu();      
+                        break;
+                        
+                    case "3":
+                        if (water<200) {
+                        System.out.println("Sorry, not enough water!");
+                        }
+                        else if (coffeb<12)
+                        {
+                        System.out.println("Sorry, not enough coffe beans!");
+                        }
+                        else if (milk<100) {
+                        System.out.println("Sorry, not enough milk!");
+                        }
+                        else if (discup<1) {
+                        System.out.println("Sorry, not enough cups!");
+                        } else if (water>=200 && coffeb>=12 && milk>=100 && discup>=1)  {
+                        System.out.println("I have enough resources, making you a coffee!");
+                        water=water-200;
+                        milk=milk-100;
+                        coffeb=coffeb-12;
+                        discup=discup-1;
+                        money=money+6;
+                        }   
+                         menu();
+                        break;
+                    case "back":
+                        menu();
+                        break;
+                    default:
+                        menu();
+                        break;
+                }
+                break;
+                
+            case "fill":
+              
+                System.out.println("Write how many ml of water you want to add:");
+                int pwater = scanner.nextInt();
+                System.out.println("Write how many ml of milk you want to add:");
+                int pmilk = scanner.nextInt();
+                System.out.println("Write how many grams of coffee beans you want to add:");
+                int pcoffeeb = scanner.nextInt();
+                System.out.println("Write how many disposable cups of coffee you want to add:");
+                int pcups = scanner.nextInt();
+                
+                water=water+pwater;
+                milk=milk+pmilk;
+                coffeb=coffeb+pcoffeeb;
+                discup=discup+pcups;
+                
+                menu();
+                break;
+            case "take":
+                System.out.println("I gave you $"+money);
+                money=0;
+                menu();
+                break;
+            case "remaining":
+                
+            System.out.println("The coffee machine has:\n" +
+                (water)+" ml of water\n" +
+                (milk)+" ml of milk\n" +
+                (coffeb)+" g of coffee beans\n" +
+                (discup)+" disposable cups\n" +"$"+
+                (money)+" of money"); 
+            menu(); 
+            break;
+            case "exit":
+            break;  
+            default:
+                System.out.println("The coffee machine has:\n" +
+                water+" ml of water\n" +
+                milk+" ml of milk\n" +
+                coffeb+" g of coffee beans\n" +
+                discup+" disposable cups\n" +"$"+
+                money+" of money");
+            menu();
+            break;
+        }
+     }      
+   
+ }  
